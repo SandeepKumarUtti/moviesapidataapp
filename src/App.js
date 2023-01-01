@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 
 const HomeTabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={HomeScreen} />
 
       <Tab.Screen name="Favorites" component={FavoritesScreen} />
@@ -32,7 +32,7 @@ const HomeTabs = () => {
 };
 const HomeDrawer = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator screenOptions={{ headerShown: false }}>
       <Drawer.Screen name="Home" component={HomeTabs} />
       <Drawer.Screen name="Password Change" component={PasswordChangeScreen} />
       <Drawer.Screen name="LogOut" component={LogoutScreen} />
