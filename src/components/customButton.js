@@ -1,10 +1,24 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  AsyncStorage,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 
 export default CustomButton = () => {
   let elv = 10;
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setItem("logindetails", value);
+    } catch (e) {
+      // saving error
+    }
+  };
   const onClick = () => {
     elv = 0;
+    storeData("abc");
   };
   const onRemove = () => {
     elv = 10;

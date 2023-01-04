@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, View, Text, FlatList, Image } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 const HomeScreen = (props) => {
@@ -16,15 +16,23 @@ const HomeScreen = (props) => {
     <View style={styles.board}>
       <Text>Movies</Text>
       <FlatList
-        style={styles.movieCard}
         data={data}
         keyExtractor={({ id }, index) => id}
-        contentContainerStyle={styles.movieCard}
         renderItem={({ item }) => (
-          <View>
-            <Text>{item.title}</Text>
+          <View style={styles.movieCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={{
+                uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+              }}
+            />
+            <View style={{ flexDirection: "column" }}>
+              <Text style={styles.cardTitle}>{item.title}</Text>
 
-            <Text>{item.overview.slice(0, 70)}...</Text>
+              <Text style={styles.cardText}>
+                {item.overview.slice(0, 70)}...
+              </Text>
+            </View>
           </View>
         )}
       />
@@ -36,6 +44,20 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignItems: "center"
   },
+  cardTitle: {
+    fontSize: 15,
+    width: 200,
+    marginBottom: 5
+  },
+  cardText: {
+    fontSize: 9,
+    width: 200
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+    margin: 10
+  },
   movieList: {
     flex: 1,
     flexWrap: "wrap"
@@ -45,11 +67,12 @@ const styles = StyleSheet.create({
     width: "45",
     color: "#12263b",
     flex: 1,
-    flexDirection: "column",
+    flexDirection: "row",
     aligItems: "center",
     flexGrow: 3,
     borderRadius: "10px",
     padding: "10px",
+    backgroundColor: "#5BC0F8",
     margin: "10px",
     background: "#a9c4e0"
   },

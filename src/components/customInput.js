@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Icon from "react-native-vector-icons/EvilIcons";
 
-import { View, StyleSheet, TextInput, Text } from "react-native";
+import { View, StyleSheet, TextInput, Text, Image } from "react-native";
 
 class CustomInput extends Component {
   constructor(props) {
@@ -69,7 +69,10 @@ class CustomInput extends Component {
             this.state.errorMessage ? style.inputError : {}
           ]}
         >
-          <Icon name={this.props.icon} size={24} color="#742dd2" />
+          <Image
+            style={{ width: 30, height: 30 }}
+            source={{ uri: this.props.icon }}
+          />
           <TextInput
             ref={this.props.name}
             style={style.input}
@@ -99,7 +102,7 @@ const style = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     position: "absolute",
-    backgroundColor: "#efeeee",
+    backgroundColor: "#F3CCFF",
     justifyContent: "space-between",
     borderRadius: 50,
     elevation: 10
