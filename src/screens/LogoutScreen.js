@@ -10,20 +10,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const LogoutScreen = (navigation) => {
-  const removeItemValue = async (value) => {
-    try {
-      await AsyncStorage.removeItem("logindetails");
-      navigation.navigate("Home");
-    } catch (e) {
-      // saving error
-    }
-  };
+const LogoutScreen = ({ onSignOut, navigation }) => {
+  // const removeItemValue = => {
+  //   console.log(2);
+  //   navigation.navigate("Login");
+  // };
 
   return (
     <View style={styles.container}>
       <Text> Are you sure do you waht to logout your account?</Text>
-      <Button onPress={removeItemValue} title="Logout"></Button>
+      <Button
+        onPress={() => navigation.navigate("Login")}
+        title="Logout"
+      ></Button>
     </View>
   );
 };

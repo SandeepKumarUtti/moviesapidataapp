@@ -63,10 +63,22 @@ function App() {
       // error reading value
     }
   };
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  const handleSignIn = () => {
+    //TODO implement real sign in mechanism
+
+    setIsAuthenticated(true);
+  };
+  const handleSignOut = () => {
+    //TODO implement real sign out mechanism
+
+    setIsAuthenticated(false);
+  };
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        {getData ? (
+        {isAuthenticated ? (
           <RootStack.Screen
             name="Home"
             component={HomeDrawer}
@@ -102,15 +114,13 @@ function App() {
           />
         ) : (
           <>
-            <>
-              <RootStack.Screen
-                name="Login"
-                component={LoginScreen}
-                options={{
-                  animationTypeForReplace: "pop"
-                }}
-              />
-            </>
+            <RootStack.Screen name="Login">
+              {(props) => <LoginScreen {...props} onSignIn={handleSignIn} />}
+            </RootStack.Screen>
+
+            <RootStack.Screen name="LogOut">
+              {(props) => <LogoutScreen {...props} onSignOut={handleSignOut} />}
+            </RootStack.Screen>
           </>
         )}
       </RootStack.Navigator>

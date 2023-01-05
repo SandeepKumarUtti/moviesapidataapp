@@ -19,7 +19,7 @@ class Form extends Component {
           placeholder="Password"
           secure={true}
         />
-        <CustomButton />
+        {/* <CustomButton /> */}
       </View>
     );
   }

@@ -7,7 +7,7 @@ import {
   View
 } from "react-native";
 
-export default CustomButton = () => {
+export default CustomButton = ({ navigation }) => {
   let elv = 10;
   const storeData = async (value) => {
     try {
